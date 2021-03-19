@@ -11,3 +11,8 @@ SESSION_ID=
 2. Run `npm install`
 
 3. Run `npm start` to run example
+
+## Notice
+
+Call for token should be handled by backend in real world case - this prevents leaking private key.
+On frontend side you should use only token for auth.
