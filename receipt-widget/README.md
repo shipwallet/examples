@@ -8,6 +8,8 @@ SITE_ID=
 SESSION_ID=
 ```
 
+Where `PRIVATE_KEY` is base 64 encoded string.
+
 2. Run `npm install`
 
 3. Run `npm start` to run example
