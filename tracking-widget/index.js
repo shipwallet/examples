@@ -16,7 +16,7 @@ app.use(express.static("static"));
 app.get("/token", async (req, res) => {
   const resourceId = req.query["resource"];
 
-  const response = await axios({
+  const options = {
     method: "POST",
     url: API_URL,
     data: {
@@ -28,13 +28,24 @@ app.get("/token", async (req, res) => {
       authorization: `Bearer ${config.PRIVATE_KEY_BASE64}`,
       accept: "application/json",
     },
-  });
-
-  const { token } = await response.data;
-
-  res.json({
-    token,
-  });
+  };
+  try {
+    const response = await axios(options);
+    const { token } = await response.data;
+    res.json({
+      token,
+    });
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    } else if (error.request) {
+      console.log(error.request);
+    } else {
+      console.log(error);
+    }
+    res.status(500).json({ message: "something went wrong" });
+  }
 });
 
 app.listen(port, () => {
