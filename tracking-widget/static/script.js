@@ -6,14 +6,17 @@ const loadTrackingWidget = async () => {
   const response = await fetch(`/token?resource=${resourceId}`);
   const { token } = await response.json();
 
- // initializie widget 
-  window.IngridTrackingWidget.config({
+  // initializie widget
+  const options = {
     elementId: "tracking-widget-container",
-    trackingNumber: resourceId,
     siteId: window.config.SITE_ID,
     locale: "en-US",
     authToken: token,
-  });
+    ...(window.config.USE_EXTERNAL_ID
+      ? { externalId: resourceId }
+      : { trackingNumber: resourceId }),
+  };
+  window.IngridTrackingWidget.config(options);
 };
 
 window.addEventListener("load", () => {

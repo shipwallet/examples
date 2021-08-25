@@ -6,7 +6,7 @@ const config = require("./config");
 const app = express();
 const port = 3000;
 
-const API_URL = "https://api-development.ingrid.com/v1/tokenauth/token.ensure";
+const API_URL = "https://api.ingrid.com/v1/tokenauth/token.ensure";
 
 app.use(express.static("static"));
 
