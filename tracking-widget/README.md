@@ -18,7 +18,7 @@ module.exports = {
 }
 ```
 
-Enter your site id to `static/config.js` file and decide if you are going to use exteranl id or tracking number:
+Enter your site id to `static/config.js` file and decide if you are going to use external id or tracking number:
 
 ```js
 window.config = {
